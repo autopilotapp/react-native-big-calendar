@@ -23,7 +23,11 @@ export function DefaultCalendarEventRenderer<T extends ICalendarEventBase>({
 }: DefaultCalendarEventRendererProps<T>) {
   const theme = useTheme()
   const eventTimeStyle = { fontSize: theme.typography.xs.fontSize, color: textColor }
-  const eventTitleStyle = { fontSize: theme.typography.sm.fontSize, color: textColor }
+  // const eventTitleStyle = { fontSize: theme.typography.sm.fontSize, color: textColor }
+
+  // for autopilot app clip first title line don't wrap
+
+  const eventTitleStyle = { fontSize: theme.typography.sm.fontSize, color: textColor, numberOfLines: 1, ellipsizeMode : 'clip', width: '92%', height: 18 };
 
   return (
     <TouchableOpacity {...touchableOpacityProps}>
