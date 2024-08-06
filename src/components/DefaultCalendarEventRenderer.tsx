@@ -27,7 +27,12 @@ export function DefaultCalendarEventRenderer<T extends ICalendarEventBase>({
 
   // for autopilot app clip first title line don't wrap
 
-  const eventTitleStyle = { fontSize: theme.typography.sm.fontSize, color: textColor, numberOfLines: 1, ellipsizeMode : 'clip', width: '92%', height: 18 };
+  const eventTitleStyle = { fontSize: theme.typography.sm.fontSize, color: textColor, ellipsizeMode : 'clip', width: '92%', height: 18 };
+
+  //console.log("event.children", event.children)
+
+  // rendering children has issues when there are JSX variables in them
+  // e.g. variables do not get displayed
 
   return (
     <TouchableOpacity {...touchableOpacityProps}>
@@ -46,7 +51,10 @@ export function DefaultCalendarEventRenderer<T extends ICalendarEventBase>({
               {formatStartEnd(event.start, event.end, ampm ? 'h:mm a' : 'HH:mm')}
             </Text>
           )}
-          {event.children && event.children}
+          {event.children && event.children} 
+          {event.city && <Text>
+            {event.city}
+          </Text>}
         </>
       )}
     </TouchableOpacity>
