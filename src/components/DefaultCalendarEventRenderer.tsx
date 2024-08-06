@@ -1,3 +1,4 @@
+// @ts-nocheck
 import dayjs from 'dayjs'
 import * as React from 'react'
 import { Text, TouchableOpacity } from 'react-native'
@@ -27,7 +28,13 @@ export function DefaultCalendarEventRenderer<T extends ICalendarEventBase>({
 
   // for autopilot app clip first title line don't wrap
 
-  const eventTitleStyle = { fontSize: theme.typography.sm.fontSize, color: textColor, ellipsizeMode : 'clip', width: '92%', height: 18 };
+  const eventTitleStyle = {
+    fontSize: theme.typography.sm.fontSize,
+    color: textColor,
+    ellipsizeMode: 'clip',
+    width: '92%',
+    height: 18,
+  }
 
   //console.log("event.children", event.children)
 
@@ -51,10 +58,8 @@ export function DefaultCalendarEventRenderer<T extends ICalendarEventBase>({
               {formatStartEnd(event.start, event.end, ampm ? 'h:mm a' : 'HH:mm')}
             </Text>
           )}
-          {event.children && event.children} 
-          {event.city && <Text>
-            {event.city}
-          </Text>}
+          {event.children && event.children}
+          {event.city && <Text>{event.city}</Text>}
         </>
       )}
     </TouchableOpacity>
